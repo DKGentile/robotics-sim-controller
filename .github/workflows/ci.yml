@@ -1,0 +1,40 @@
+﻿name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Install Python dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r sim/requirements.txt
+
+      - name: Run unit tests
+        working-directory: build
+        run: ctest --output-on-failure
+
+      - name: Run sample simulation
+        run: ./build/robotics-sim --duration 5 --v 0.3 --w 0.15 --slip 0.02 --noise 0.01 --drift 0.001 --profile triangle --csv out/ci_telemetry.csv
+
+      - name: Render plots
+        run: python3 sim/visualize.py out/ci_telemetry.csv --output-dir out/plots --headless
+
+      - name: Check generated artifacts
+        run: |
+          test -f out/ci_telemetry.csv
+          test -f out/plots/trajectory.png
+          test -f out/plots/signals.png
