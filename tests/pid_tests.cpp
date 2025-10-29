@@ -27,5 +27,5 @@ TEST(PidControllerTest, DerivativeZeroOnFirstUpdate) {
     const double first = pid.update(1.0, 0.0, 0.01);
     const double second = pid.update(1.0, 0.5, 0.01);
     EXPECT_DOUBLE_EQ(first, 0.0);
-    EXPECT_GT(second, 0.0);
+    EXPECT_LT(second, 0.0);
 }

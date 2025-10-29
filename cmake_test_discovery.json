@@ -1,0 +1,43 @@
+{
+  "tests": 5,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "PidControllerTest",
+      "tests": 3,
+      "testsuite": [
+        {
+          "name": "ProportionalResponse",
+          "file": "C:\\Users\\demit\\Desktop\\apps\\robotics-sim-controller\\tests\\pid_tests.cpp",
+          "line": 4
+        },
+        {
+          "name": "IntegratorClampsWithinLimits",
+          "file": "C:\\Users\\demit\\Desktop\\apps\\robotics-sim-controller\\tests\\pid_tests.cpp",
+          "line": 11
+        },
+        {
+          "name": "DerivativeZeroOnFirstUpdate",
+          "file": "C:\\Users\\demit\\Desktop\\apps\\robotics-sim-controller\\tests\\pid_tests.cpp",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "name": "KinematicsTest",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "BodyToWheelSplitsVelocities",
+          "file": "C:\\Users\\demit\\Desktop\\apps\\robotics-sim-controller\\tests\\kinematics_tests.cpp",
+          "line": 4
+        },
+        {
+          "name": "DynamicsRespondToCommands",
+          "file": "C:\\Users\\demit\\Desktop\\apps\\robotics-sim-controller\\tests\\kinematics_tests.cpp",
+          "line": 15
+        }
+      ]
+    }
+  ]
+}

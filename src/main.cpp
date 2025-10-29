@@ -74,7 +74,7 @@ ControllerConfig load_pid_config(const std::string& path) {
     buffer << file.rdbuf();
     const std::string contents = buffer.str();
 
-    const std::regex block_regex(R"("([A-Za-z0-9_]+)"\s*:\s*\{([^}]*)\})");
+    const std::regex block_regex("\"([A-Za-z0-9_]+)\"\\s*:\\s*\\{([^}]*)\\}");
     for (std::sregex_iterator it(contents.begin(), contents.end(), block_regex);
          it != std::sregex_iterator(); ++it) {
         const std::string name = (*it)[1].str();
